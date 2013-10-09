@@ -79,6 +79,7 @@ syntax keyword typeScriptPrototype prototype
 syntax keyword typeScriptBrowserObjects window navigator screen history location
 
 syntax keyword typeScriptDOMObjects document event HTMLElement Anchor Area Base Body Button Form Frame Frameset Image Link Meta Option Select Style Table TableCell TableRow Textarea
+syntax keyword typeScriptDOMObjects HTMLCanvasElement HTMLButtonElement HTMLCanvasRenderingContext2D
 syntax keyword typeScriptDOMMethods createTextNode createElement insertBefore replaceChild removeChild appendChild hasChildNodes cloneNode normalize isSupported hasAttributes getAttribute setAttribute removeAttribute getAttributeNode setAttributeNode removeAttributeNode getElementsByTagName hasAttribute getElementById adoptNode close compareDocumentPosition createAttribute createCDATASection createComment createDocumentFragment createElementNS createEvent createExpression createNSResolver createProcessingInstruction createRange createTreeWalker elementFromPoint evaluate getBoxObjectFor getElementsByClassName getSelection getUserData hasFocus importNode
 syntax keyword typeScriptDOMProperties nodeName nodeValue nodeType parentNode childNodes firstChild lastChild previousSibling nextSibling attributes ownerDocument namespaceURI prefix localName tagName
 
@@ -183,8 +184,9 @@ if main_syntax == "typeScript"
 " syntax sync match typeScriptHighlight grouphere typeScriptBlock /{/
 endif
 
-syntax keyword typeScriptFuncKeyword function contained
-syntax region typeScriptFuncDef start="function" end="\([^)]*\)" contains=typeScriptFuncKeyword,typeScriptFuncArg keepend
+"syntax keyword typeScriptFuncKeyword function contained
+"syntax region typeScriptFuncDef start="function" end="\([^)]*\)" contains=typeScriptFuncKeyword,typeScriptFuncArg keepend
+syntax keyword typeScriptFuncKeyword function
 syntax match typeScriptFuncArg "\(([^()]*)\)" contains=typeScriptParens,typeScriptFuncComma contained
 syntax match typeScriptFuncComma /,/ contained
 " syntax region typeScriptFuncBlock contained matchgroup=typeScriptFuncBlock start="{" end="}" contains=@typeScriptAll,typeScriptParensErrA,typeScriptParensErrB,typeScriptParen,typeScriptBracket,typeScriptBlock fold
@@ -291,9 +293,9 @@ HiLink typeScriptAjaxObjects htmlH1
 HiLink typeScriptAjaxMethods Exception
 HiLink typeScriptAjaxProperties Type
 
-HiLink typeScriptFuncDef Title
-    HiLink typeScriptFuncArg Special
-    HiLink typeScriptFuncComma Operator
+" HiLink typeScriptFuncDef Title
+" HiLink typeScriptFuncArg Special
+" HiLink typeScriptFuncComma Operator
 
 HiLink typeScriptHtmlEvents Special
 HiLink typeScriptHtmlElemProperties Type
