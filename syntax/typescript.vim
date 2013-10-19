@@ -31,6 +31,7 @@ hi link shebang Comment
 syn keyword typeScriptCommentTodo TODO FIXME XXX TBD contained
 syn match typeScriptLineComment "\/\/.*" contains=@Spell,typeScriptCommentTodo,typeScriptRef
 syn match typeScriptRef /\/\/\/\s*<reference\s\+.*\/>$/ contains=typeScriptRefD,typeScriptRefS
+syn match typeScriptRef /\/\/\/\s*<amd-dependency\s\+.*\/>$/ contains=typeScriptRefD,typeScriptRefS
 syn region typeScriptRefD start=+"+ skip=+\\\\\|\\"+ end=+"\|$+
 syn region typeScriptRefS start=+'+ skip=+\\\\\|\\'+ end=+'\|$+
 
