@@ -28,15 +28,15 @@ syn match shebang "^#!.*/bin/env\s\+node\>"
 hi link shebang Comment
 
 "" typeScript comments"{{{
-syn keyword typeScriptCommentTodo TODO FIXME XXX TBD contained
-syn match typeScriptLineComment "\/\/.*" contains=@Spell,typeScriptCommentTodo,typeScriptRef
+syn keyword typeScriptCommentImportant TODO FIXME XXX TBD NOTE contained
+syn match typeScriptLineComment "\/\/.*" contains=@Spell,typeScriptCommentImportant,typeScriptRef
 syn match typeScriptRef /\/\/\/\s*<reference\s\+.*\/>$/ contains=typeScriptRefD,typeScriptRefS
 syn match typeScriptRef /\/\/\/\s*<amd-dependency\s\+.*\/>$/ contains=typeScriptRefD,typeScriptRefS
 syn region typeScriptRefD start=+"+ skip=+\\\\\|\\"+ end=+"\|$+
 syn region typeScriptRefS start=+'+ skip=+\\\\\|\\'+ end=+'\|$+
 
 syn match typeScriptCommentSkip "^[ \t]*\*\($\|[ \t]\+\)"
-syn region typeScriptComment start="/\*" end="\*/" contains=@Spell,typeScriptCommentTodo
+syn region typeScriptComment start="/\*" end="\*/" contains=@Spell,typeScriptCommentImportant
 "}}}
 "" JSDoc support start"{{{
 if !exists("typeScript_ignore_typeScriptdoc")
@@ -45,7 +45,7 @@ if !exists("typeScript_ignore_typeScriptdoc")
 " syntax coloring for JSDoc comments (HTML)
 "unlet b:current_syntax
 
-  syntax region typeScriptDocComment matchgroup=typeScriptComment start="/\*\*\s*$" end="\*/" contains=typeScriptDocTags,typeScriptCommentTodo,typeScriptCvsTag,@typeScriptHtml,@Spell fold
+  syntax region typeScriptDocComment matchgroup=typeScriptComment start="/\*\*\s*$" end="\*/" contains=typeScriptDocTags,typeScriptCommentImportant,typeScriptCvsTag,@typeScriptHtml,@Spell fold
   syntax match typeScriptDocTags contained "@\(param\|argument\|requires\|exception\|throws\|type\|class\|extends\|see\|link\|member\|module\|method\|title\|namespace\|optional\|default\|base\|file\)\>" nextgroup=typeScriptDocParam,typeScriptDocSeeTag skipwhite
   syntax match typeScriptDocTags contained "@\(beta\|deprecated\|description\|fileoverview\|author\|license\|version\|returns\=\|constructor\|private\|protected\|final\|ignore\|addon\|exec\)\>"
   syntax match typeScriptDocParam contained "\%(#\|\w\|\.\|:\|\/\)\+"
@@ -79,7 +79,7 @@ syntax keyword typeScriptPrototype prototype
 """"""""""""""""""""""""
 syntax keyword typeScriptBrowserObjects window navigator screen history location
 
-syntax keyword typeScriptDOMObjects document event HTMLElement Anchor Area Base Body Button Form Frame Frameset Image Link Meta Option Select Style Table TableCell TableRow Textarea
+syntax keyword typeScriptDOMObjects document event HTMLElement Anchor Area Base Button Form Frame Frameset Image Link Meta Option Select Style Table TableCell TableRow Textarea
 syntax keyword typeScriptDOMObjects HTMLCanvasElement HTMLButtonElement HTMLCanvasRenderingContext2D
 syntax keyword typeScriptDOMMethods createTextNode createElement insertBefore replaceChild removeChild appendChild hasChildNodes cloneNode normalize isSupported hasAttributes getAttribute setAttribute removeAttribute getAttributeNode setAttributeNode removeAttributeNode getElementsByTagName hasAttribute getElementById adoptNode close compareDocumentPosition createAttribute createCDATASection createComment createDocumentFragment createElementNS createEvent createExpression createNSResolver createProcessingInstruction createRange createTreeWalker elementFromPoint evaluate getBoxObjectFor getElementsByClassName getSelection getUserData hasFocus importNode
 syntax keyword typeScriptDOMProperties nodeName nodeValue nodeType parentNode childNodes firstChild lastChild previousSibling nextSibling attributes ownerDocument namespaceURI prefix localName tagName
@@ -237,7 +237,7 @@ if version >= 508 || !exists("did_typeScript_syn_inits")
   HiLink typeScriptRefS String
   HiLink typeScriptRefD String
   HiLink typeScriptDocComment Comment
-  HiLink typeScriptCommentTodo Todo
+  HiLink typeScriptCommentImportant Todo
   HiLink typeScriptCvsTag Function
   HiLink typeScriptDocTags Special
   HiLink typeScriptDocSeeTag Function
