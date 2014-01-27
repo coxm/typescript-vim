@@ -45,9 +45,10 @@ if !exists("typeScript_ignore_typeScriptdoc")
 " syntax coloring for JSDoc comments (HTML)
 "unlet b:current_syntax
 
+  " JSDoc tags.
   syntax region typeScriptDocComment matchgroup=typeScriptComment start="/\*\*\s*$" end="\*/" contains=typeScriptDocTags,typeScriptCommentImportant,typeScriptCvsTag,@typeScriptHtml,@Spell fold
   syntax match typeScriptDocTags contained "@\(param\|argument\|requires\|exception\|throws\|type\|class\|extends\|see\|link\|member\|module\|method\|title\|namespace\|optional\|default\|base\|file\)\>" nextgroup=typeScriptDocParam,typeScriptDocSeeTag skipwhite
-  syntax match typeScriptDocTags contained "@\(beta\|deprecated\|description\|fileoverview\|author\|license\|version\|returns\=\|constructor\|private\|protected\|final\|ignore\|addon\|exec\)\>"
+  syntax match typeScriptDocTags contained "@\(abstract\|access\|alias\|augments\|author\|borrows\|callback\|classdesc\|constant\|constructor\|constructs\|copyright\|default\|deprecated\|desc\|enum\|event\|example\|exports\|external\|file\|fires\|global\|ignore\|inner\|instance\|kind\|lends\|license\|link\|member\|memberof\|method\|mixes\|mixin\|module\|name\|namespace\|private\|property\|protected\|public\|readonly\|requires\|returns\|see\|since\|static\|summary\|this\|throws\|todo\|tutorial\|type\|typedef\|variation\|version\)\>"
   syntax match typeScriptDocParam contained "\%(#\|\w\|\.\|:\|\/\)\+"
   syntax region typeScriptDocSeeTag contained matchgroup=typeScriptDocSeeTag start="{" end="}" contains=typeScriptDocTags
 
@@ -80,8 +81,8 @@ syntax keyword typeScriptPrototype prototype
 syntax keyword typeScriptBrowserObjects window navigator screen history location
 
 syntax keyword typeScriptDOMObjects document event HTMLElement Anchor Area Base Button Form Frame Frameset Image Link Meta Option Select Style Table TableCell TableRow Textarea
-syntax keyword typeScriptDOMObjects HTMLCanvasElement HTMLButtonElement HTMLCanvasRenderingContext2D
-syntax keyword typeScriptDOMMethods createTextNode createElement insertBefore replaceChild removeChild appendChild hasChildNodes cloneNode normalize isSupported hasAttributes getAttribute setAttribute removeAttribute getAttributeNode setAttributeNode removeAttributeNode getElementsByTagName hasAttribute getElementById adoptNode close compareDocumentPosition createAttribute createCDATASection createComment createDocumentFragment createElementNS createEvent createExpression createNSResolver createProcessingInstruction createRange createTreeWalker elementFromPoint evaluate getBoxObjectFor getElementsByClassName getSelection getUserData hasFocus importNode
+syntax keyword typeScriptDOMObjects HTMLCanvasElement HTMLButtonElement CanvasRenderingContext2D
+syntax keyword typeScriptDOMMethods createTextNode createElement insertBefore replaceChild removeChild appendChild hasChildNodes cloneNode normalize isSupported hasAttributes getAttribute setAttribute removeAttribute getAttributeNode setAttributeNode removeAttributeNode getElementsByTagName hasAttribute getElementById adoptNode close compareDocumentPosition createAttribute createCDATASection createComment createDocumentFragment createElementNS createEvent createExpression createNSResolver createProcessingInstruction createRange createTreeWalker elementFromPoint evaluate getBoxObjectFor getElementsByClassName getSelection getUserData hasFocus importNode requestAnimationFrame cancelAnimationFrame
 syntax keyword typeScriptDOMProperties nodeName nodeValue nodeType parentNode childNodes firstChild lastChild previousSibling nextSibling attributes ownerDocument namespaceURI prefix localName tagName
 
 syntax keyword typeScriptAjaxObjects XMLHttpRequest
